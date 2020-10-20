@@ -2,6 +2,7 @@ import React from 'react';
 
 const Form = (props) => {
 	//STATE FOR THE FORM
+	console.log('my props in form - ', props);
 	const [formData, setFormData] = React.useState(props.cookbook);
 
 	//FUNCTIONS
@@ -26,8 +27,8 @@ const Form = (props) => {
 				placeholder='Book Title'
 			/>
 			<input
-				type='text'
-				name='publishing-year'
+				type='number'
+				name='yearPublished'
 				value={formData.yearPublished}
 				onChange={handleChange}
 				placeholder='Publishing Year'

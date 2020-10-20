@@ -14,7 +14,7 @@ function App() {
 	// Empty book for form
 	const emptyCkb = {
 		title: '',
-		yearPublished: 0,
+		yearPublished: '',
 	};
 	const [selectedBook, setSelectedBook] = React.useState(emptyCkb);
 
@@ -23,7 +23,7 @@ function App() {
 		fetch(url + '/api/cookbooks/')
 			.then((response) => response.json())
 			.then((data) => {
-				setCookbooks(data.data);
+				setCookbooks(data);
 				console.log('data from getBooks', data);
 			});
 	};
@@ -35,7 +35,7 @@ function App() {
 
 	// // handleCreate function for creating cookbooks
 	const handleCreate = (newBook) => {
-		fetch(url + '/api/cookbooks/' + newBook._id, {
+		fetch(url + '/api/cookbooks/', {
 			method: 'post',
 			headers: {
 				'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ function App() {
 
 	// //handleUpdate to update a cookbook when form is clicked
 	const handleUpdate = (cookbook) => {
-		fetch(url + '/api/cookbook/' + cookbook._id, {
+		fetch(url + '/api/cookbooks/' + cookbook._id, {
 			method: 'put',
 			headers: {
 				'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ function App() {
 
 	// //deleteBook function to delete a ckb
 	const deleteBook = (cookbook) => {
-		fetch(url + '/cookbook/' + cookbook._id, {
+		fetch(url + '/api/cookbooks/' + cookbook._id, {
 			method: 'delete',
 		}).then((response) => getBooks());
 	};
@@ -94,7 +94,7 @@ function App() {
 							<Form
 								{...routerProps}
 								label='create'
-								cookbook={{ emptyCkb }}
+								cookbook={emptyCkb}
 								handleSubmit={handleCreate}
 							/>
 						)}
