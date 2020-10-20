@@ -23,7 +23,7 @@ function App() {
 		fetch(url + '/api/cookbooks/')
 			.then((response) => response.json())
 			.then((data) => {
-				setCookbooks(data);
+				setCookbooks(data.data);
 				console.log('data from getBooks', data);
 			});
 	};

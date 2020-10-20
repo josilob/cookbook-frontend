@@ -2,7 +2,7 @@ import React from 'react';
 
 const Display = (props) => {
 	const { cookbooks } = props;
-	console.log('my cookbooks', cookbooks);
+	console.log('my props', props);
 	const loaded = () => (
 		<div style={{ textAlign: 'center' }}>
 			{cookbooks.map((cookbook) => (
